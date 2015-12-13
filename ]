@@ -11,11 +11,16 @@ module Soren
     (base.instance_methods(false)).each do |method_name|
       old_method = base.instance_method(method_name)
       self.send(:define_method, method_name) do |*args|
-        x = old_method.bind(self).()
+        # return NullObject
+        #old_method = base.instance_method(method_name)
+
+        #x = self.send(method_name, args)
+        #x = base.send(old_method, args)
+        #super_method = old_method.bind(self).(args) #old_method.bind(self).(args)
         if(x.nil?)
           return NullObject
         else
-          return x
+          super_method
         end
       end
     end
