@@ -15,7 +15,7 @@ module Soren
     (base.methods - Object.methods).each do |method_name|
       old_method = base.method(method_name).unbind
       base.send(:define_singleton_method, method_name) do |*args|
-        result = old_method.bind(base).()
+        result = old_method.bind(base).(*args)
         if(result.nil?)
           return NullObject
         else
