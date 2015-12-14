@@ -4,7 +4,7 @@ module Soren
     (base.instance_methods(false)).each do |method_name|
       old_method = base.instance_method(method_name)
       self.send(:define_method, method_name) do |*args|
-        result = old_method.bind(self).()
+        result = old_method.bind(self).(*args)
         if(result.nil?)
           return NullObject
         else
