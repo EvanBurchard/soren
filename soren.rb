@@ -1,28 +1,28 @@
 module Soren
-  def nil_returner
-    if super().nil?
-      return NullObject
-    else
-      super
-    end
-  end
   def self.prepended(base)
     Object.const_set("NullObject", Class.new)
     (base.instance_methods(false)).each do |method_name|
       old_method = base.instance_method(method_name)
       self.send(:define_method, method_name) do |*args|
-        x = old_method.bind(self).()
-        if(x.nil?)
+        result = old_method.bind(self).()
+        if(result.nil?)
           return NullObject
         else
-          return x
+          return result
         end
       end
     end
     (base.methods - Object.methods).each do |method_name|
-      base.class.class_exec do
-        define_method(method_name) do
+      #raise method_name.to_s + "aaaaaaaaaaaaaaaaaaaa"
+      old_method = base.method(method_name)
+
+      base.send(:define_singleton_method, method_name) do
+        result = old_method.bind(base).()
+        #result = base.send(old_method)
+        if(result.nil?)
           return NullObject
+        else
+          return result
         end
       end
     end

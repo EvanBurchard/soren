@@ -8,5 +8,3 @@ class Toy
   end
   prepend Soren
 end
-
-
