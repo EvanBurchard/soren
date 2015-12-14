@@ -20,5 +20,22 @@ class NilFree
       return nil
     end
   end
+
+  def block_addition(x, y)
+    if (x && y)
+      return x + y
+    else
+      return nil
+    end
+  end
+
+  def self.class_addition(x, y)
+    if (x && y)
+      return x + y
+    else
+      return nil
+    end
+  end
+
   prepend Soren
 end
