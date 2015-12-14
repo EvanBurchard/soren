@@ -16,6 +16,7 @@ class TestSoren < MiniTest::Unit::TestCase
     assert_equal(NullObject, NilFree.class_addition(nil, 3) )
     assert_equal(NullObject, NilFree.class_addition(nil, nil) )
     assert_equal(NullObject, NilFree.class_addition(2, nil) )
+
   end
 
 end
