@@ -13,12 +13,9 @@ module Soren
       end
     end
     (base.methods - Object.methods).each do |method_name|
-      #raise method_name.to_s + "aaaaaaaaaaaaaaaaaaaa"
-      old_method = base.method(method_name)
-
-      base.send(:define_singleton_method, method_name) do
+      old_method = base.method(method_name).unbind
+      base.send(:define_singleton_method, method_name) do |*args|
         result = old_method.bind(base).()
-        #result = base.send(old_method)
         if(result.nil?)
           return NullObject
         else
