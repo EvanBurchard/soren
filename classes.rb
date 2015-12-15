@@ -37,5 +37,21 @@ class NilFree
     end
   end
 
+  def method_missing(method, *arguments, &block)
+    if(method == :should_return_args)
+      return arguments
+    else
+      nil
+    end
+  end
+
+  def self.method_missing(method, *arguments, &block)
+    if(method == :should_return_args)
+      return arguments
+    else
+      nil
+    end
+  end
+
   prepend Soren
 end

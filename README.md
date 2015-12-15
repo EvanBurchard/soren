@@ -84,7 +84,6 @@ overwrites the methods as it would before.
 It's named after [Søren Kierkegaard](https://en.wikipedia.org/wiki/S%C3%B8ren_Kierkegaard). He's the anti-nihilism guy.
 
 # TODO
-* dynamically defined methods - finding ones that exist (method_missing)
 * dynamically defined methods - dirty flag as class variable?  Resorenifying?
 * Class hierarchy for NullX types.
 * keeping history of messages sent to object - Always instantiate null object?
