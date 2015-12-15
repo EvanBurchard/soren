@@ -88,3 +88,4 @@ It's named after [Søren Kierkegaard](https://en.wikipedia.org/wiki/S%C3%B8ren_K
 * Class hierarchy for NullX types.
 * keeping history of messages sent to object - Always instantiate null object?
 * Support for ActiveModel
+* Gemify it
