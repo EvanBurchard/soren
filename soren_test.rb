@@ -17,6 +17,8 @@ class TestSoren < MiniTest::Unit::TestCase
     assert_equal(NullObject, NilFree.class_addition(nil, nil) )
     assert_equal(NullObject, NilFree.class_addition(2, nil) )
 
+    assert_equal(NullObject, NilFree.new.new_string_with_block("Soren"){|name| puts "Hi, #{name}" })
+    assert_equal("Hi, Soren", NilFree.new.new_string_with_block("Soren"){|name| "Hi, #{name}" })
   end
 
 end

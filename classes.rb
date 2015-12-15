@@ -21,17 +21,9 @@ class NilFree
     end
   end
 
-  def block_addition(x, y)
-    if (x && y)
-      return x + y
-    else
-      return nil
-    end
-  end
-
-  def self.class_addition(x, y)
-    if (x && y)
-      return x + y
+  def new_string_with_block(name)
+    if block_given?
+     yield(name)
     else
       return nil
     end
