@@ -29,5 +29,13 @@ class NilFree
     end
   end
 
+  def self.new_string_with_block(name)
+    if block_given?
+     yield(name)
+    else
+      return nil
+    end
+  end
+
   prepend Soren
 end

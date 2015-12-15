@@ -4,8 +4,8 @@ module Soren
 
     (base.instance_methods(false)).each do |method_name|
       old_method = base.instance_method(method_name)
-      self.send(:define_method, method_name) do |*args|
-        result = old_method.bind(self).(*args)
+      self.send(:define_method, method_name) do |*args, &block|
+        result = old_method.bind(self).(*args, &block)
         if(result.nil?)
           return NullObject
         else
@@ -16,8 +16,8 @@ module Soren
 
     (base.methods - Object.methods).each do |method_name|
       old_method = base.method(method_name).unbind
-      base.send(:define_singleton_method, method_name) do |*args|
-        result = old_method.bind(base).(*args)
+      base.send(:define_singleton_method, method_name) do |*args, &block|
+        result = old_method.bind(base).(*args, &block)
         if(result.nil?)
           return NullObject
         else
